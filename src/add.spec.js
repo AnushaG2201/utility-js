@@ -1,5 +1,5 @@
 const add = require('./add');
-const head = require('./head');
+
 describe('Add', () => {
 
     it('Sum of 0 and 0 is 0', () => {
@@ -11,8 +11,10 @@ describe('Add', () => {
     });
 
 })
-describe('Return Head', () =>{
+//const head = require('./head');
+describe('Return Head', () => {
+    var headArray = [1,2,3];
     it('Head value of [1,2,3] is 1',() => {
-        expect(head([1,2,3])).toEqual(1);
-       })
+        this.expect(head(headArray)).toEqual(1);
+       });
 })

@@ -2,8 +2,8 @@ const add = (first,second) => {
     return first + second;   
 }
 
-const Head = (arr[]) => {
+const head = (arr) => {
     return arr[0];
 }
-module.exports = add;
-module.exports = Head;
+module.exports = {add,head};
+//module.exports = head;
