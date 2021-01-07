@@ -6,3 +6,4 @@ const Head = (arr[]) => {
     return arr[0];
 }
 module.exports = add;
+module.exports = Head;
