@@ -1,4 +1,12 @@
 const head = (arr) => {
-       return arr[0];
+    if(arr == null)
+        return undefined;
+     return arr[0];
 }
-module.exports = head;
+
+const tail = (arr) => {
+     if(arr == null)
+        return arr;
+      return arr.slice(1);
+ }
+module.exports = {head:head,tail:tail};
