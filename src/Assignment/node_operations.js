@@ -9,4 +9,10 @@ const tail = (arr) => {
         return arr;
       return arr.slice(1);
  }
-module.exports = {head:head,tail:tail};
+
+ const map = (arr, cube => {
+ return arr[0]*arr[0]*arr[0]}) => {
+ return cube();
+ }
+
+module.exports = {head:head, tail:tail, map:map};
