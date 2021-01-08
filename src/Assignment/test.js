@@ -19,7 +19,13 @@ describe ('Return Tail value' , () => {
 })
 
 describe ('Return Mapped Operation' , () => {
-    it('Mapped value of ([],cube) is []', () =>{
-        expect(operations.map([2],cube())).toEquals([8]);
+    afterEach(() => {
+    sandbox..restore();
+    })
+    it('Mapped value of ([2,3,4],cube) is [8,27,64]', () =>{
+        expect(operations.map([2, 3, 4],operations.storeCube)).toEqual([8, 27, 64]);
+        });
+    it('Mapped value of [] is []' , () => {
+        expect(operations.map([],operations.storeCube)).toEqual([])
         });
      })
