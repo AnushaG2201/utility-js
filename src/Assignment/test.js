@@ -55,10 +55,10 @@ describe ('Return Value according to filter', () => {
         });
 
     it('Filter of [1,2,3],1 is [2,3]', () => {
-        expect(operations.filter([1, 2, 3], operations.filterValuesGreaterThanX)).toEqual([2, 3]);
+        expect(operations.filter([1, 2, 3], operations.filterValuesGreaterThanX(1))).toEqual([2, 3]);
         });
 
-    it('Filter of [],filterUpperCase is []', () => {
+    it('Filter of ["a,B,c,D"],filterUpperCase is ["B,D"]', () => {
         expect(operations.filter(['a','B','c','D'],operations.filterUpperCase)).toEqual['B','D'];
          });
     })
@@ -84,6 +84,12 @@ describe('Reduce functionality' , () => {
      });
      it('The reduce of [a,b,c],(x,y) is [abc]', () => {
              expect(operations.reduce(['a','b','c'],operations.returnReduce)).toEqual('abc');
+      });
+      it('The reduce of [1,2,3],(x,y,5) is [11]', () => {
+                  expect(operations.reduce([1,2,3],operations.returnReduce,5)).toEqual(11);
+      });
+      it('The reduce of [a,b,c],(x,y) is [abc]', () => {
+                   expect(operations.reduce(['a','b','c'],operations.returnReduce,'z')).toEqual('zabc');
       });
 
 })

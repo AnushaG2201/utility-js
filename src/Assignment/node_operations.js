@@ -31,16 +31,18 @@ const filter = (arr, filterOperation) => {
 var filterUpperCase = (char) => char > 'A' && char < 'Z';
 var returnTrue = (num) => num;
 var returnFalse = (num) => !num;
-var filterValuesGreaterThanX = (num, x) => num > 1;
+var filterValuesGreaterThanX = (num) => num > 1;
 
-const reduce = (arr,reducerFunc) => {
+const reduce = (arr,reducerFunc,additionalValue) => {
       if(arr.length == 0)
-          return arr;
-       var result;
-       result = arr.reduce(reducerFunc);
-       return result;
-}
-
+         return arr;
+      if(additionalValue == undefined)
+         result = arr.reduce(reducerFunc);
+      else{
+          result = arr.reduce(reducerFunc,additionalValue);
+        }
+      return result;
+ }
 var returnReduce = (x,y) => x+y;
 
 const max = (arr) => {
@@ -67,4 +69,6 @@ returnTrue:returnTrue,
 max:max,
 min:min,
 returnReduce:returnReduce,
-reduce:reduce};
+reduce:reduce,
+};
+//returnReduceWithValues:returnReduceWithValues};
