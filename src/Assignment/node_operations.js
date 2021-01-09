@@ -1,4 +1,4 @@
-global.array = [];
+//global.mapResult = [];
 const head = (arr) => {
     if(arr == null)
         return undefined;
@@ -11,30 +11,34 @@ const tail = (arr) => {
       return arr.slice(1);
  }
 
- const map = (arr, cube) => {
-    if(arr.length != 0){
-        var numToBeCubed=arr.shift();
-        var cubedValue = cube(numToBeCubed);
-        array.push(cubedValue);
-        console.log(array.length);
-        map(arr,cube);
-        }
-        return array;
+ const map = (arr, operation) => {
+        mapResult = operation(arr);
+        return mapResult;
 }
-var storeCube = (arrVariable) => {
-    var result = arrVariable*arrVariable*arrVariable;
+var storeCube = (arr) => {
+    var result = arr.map((num) => {
+        return Math.pow(num,3)})
     return result;
     }
+var returnIdentity = (arr) => {
+    var result = arr.map((num) => {
+        return num*1;
+     })
+     return result;
+        }
+var returnObject = (arr) => {
+        var result = arr.map((obj) => {
+        return obj.x+1})
+       return result;
+        }
 
 const filter = (arr,x) => {
-   //console.log(arr,x);
     var result ;
     result = filterUppercase(arr);
-    //result = filterValuesGreaterThanX(arr, 1);
     if(x == true)
      result = arr.filter(x => true);
     if(typeof(x) == "number")
-     result = arr.filter(num => num > x);
+     result = filterValuesGreaterThanX(arr, x);
     return result;
     }
 var filterUppercase = (arr) => {
@@ -42,10 +46,10 @@ var res = arr.filter(char => char > 65 && char < 90)
 return res;
 }
 
-//var filterValuesGreaterThanX(arr, x) => {
-//var res = arr.filter(num => num > x);
-//return res;
-//}
+var filterValuesGreaterThanX = (arr, x) => {
+var res = arr.filter(num => num > x);
+return res;
+}
 
 
 
@@ -56,8 +60,8 @@ const min = (arr) => {
        return Math.min(...arr);
        }
 
-const reduce = (arr,reducer) => {
+//const reduce = (arr,reducer) => {
+//
+//    }
 
-    }
-
-module.exports = {head:head, tail:tail, map:map, storeCube:storeCube, filter:filter, max:max, min:min,filterUppercase:filterUppercase};
+module.exports = {head:head, tail:tail, map:map, storeCube:storeCube, filter:filter, max:max, min:min,filterUppercase:filterUppercase,filterValuesGreaterThanX:filterValuesGreaterThanX,returnIdentity:returnIdentity,returnObject:returnObject};

@@ -29,10 +29,15 @@ describe ('Return Mapped Operation' , () => {
         expect(operations.map([2, 3, 4],operations.storeCube)).toEqual([8, 27, 64]);
         });
 
-//    it('Mapped value of ({x:10},object) is [11]', () => {
-//        var someObject = new Object();
-//        expect(operations.map({x:10,someObject})).toEqual(11);
-//         });
+    it('Mapped value of ([2, 3, 4],identity) is [2, 3, 4]', () =>{
+            expect(operations.map([2, 3, 4],operations.returnIdentity)).toEqual([2, 3, 4]);
+            });
+
+    it('Mapped value of ({x:10},object) is [11]', () => {
+        var a = [{x:10}];
+        var obj;
+        expect(operations.map(a,operations.returnObject)).toEqual([11]);
+         });
 
      })
 
