@@ -11,43 +11,27 @@ const tail = (arr) => {
       return arr.slice(1);
  }
 
- const map = (arr, operation) => {
-        mapResult = operation(arr);
-        return mapResult;
-}
-var storeCube = (arr) => {
-    var result = arr.map((num) => {
-        return Math.pow(num,3)})
-    return result;
-    }
-var returnIdentity = (arr) => {
-    var result = arr.map((num) => {
-        return num*1;
-     })
-     return result;
-        }
-var returnObject = (arr) => {
-        var result = arr.map((obj) => {
-        return obj.x+1})
+const map = (arr,mapOperation) => {
+             var mapResult;
+             mapResult = arr.map(mapOperation);
+             return mapResult;
+ }
+var returnCube = (num) => Math.pow(num,3);
+var returnIdentity = (num) => num * 1;
+var returnObject = (obj) => obj.x+1;
+
+const filter = (arr, filterOperation) => {
+      if(arr.length == 0)
+        return arr;
+       var result;
+       result = arr.filter(filterOperation);
        return result;
-        }
-
-const filter = (arr,x) => {
-    var result ;
-    result = arr.filter(x);
-    if(x == true)
-     result = arr.filter(x => true);
-    if(typeof(x) == "number")
-     result = filterValuesGreaterThanX(arr, x);
-    return result;
-    }
-var filterUppercase = (arr) => (char => char > 65 && char < 90)
 }
 
-var filterValuesGreaterThanX = (arr, x) => {
-var res = arr.filter(num => num > x);
-return res;
-}
+var filterUpperCase = (char) => char > 'A' && char < 'Z';
+var returnTrue = (num) => num;
+var returnFalse = (num) => !num;
+var filterValuesGreaterThanX = (num, x) => num > 1;
 
 const reduce = (arr,reducerFunc) => {
       if(arr.length == 0)
@@ -55,17 +39,32 @@ const reduce = (arr,reducerFunc) => {
        var result;
        result = arr.reduce(reducerFunc);
        return result;
-    }
+}
+
 var returnReduce = (x,y) => x+y;
 
 const max = (arr) => {
        return Math.max(...arr);
-       }
+}
 
 const min = (arr) => {
        return Math.min(...arr);
-       }
+}
 
 
 
-module.exports = {head:head, tail:tail, map:map, storeCube:storeCube, filter:filter, max:max, min:min,filterUppercase:filterUppercase,filterValuesGreaterThanX:filterValuesGreaterThanX,returnIdentity:returnIdentity,returnObject:returnObject,returnReduce:returnReduce,reduce:reduce};
+module.exports = {head:head,
+tail:tail,
+map:map,
+returnCube:returnCube,
+returnIdentity:returnIdentity,
+returnObject:returnObject,
+filter:filter,
+filterUpperCase:filterUpperCase,
+filterValuesGreaterThanX:filterValuesGreaterThanX,
+returnFalse:returnFalse,
+returnTrue:returnTrue,
+max:max,
+min:min,
+returnReduce:returnReduce,
+reduce:reduce};

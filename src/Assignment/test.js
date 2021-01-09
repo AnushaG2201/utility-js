@@ -22,11 +22,11 @@ describe ('Return Tail value' , () => {
 describe ('Return Mapped Operation' , () => {
 
     it('Mapped value of [] is []' , () => {
-       expect(operations.map([],operations.storeCube)).toEqual([])
+       expect(operations.map([],operations.returnCube)).toEqual([])
        });
 
     it('Mapped value of ([2,3,4],cube) is [8,27,64]', () =>{
-        expect(operations.map([2, 3, 4],operations.storeCube)).toEqual([8, 27, 64]);
+        expect(operations.map([2, 3, 4],operations.returnCube)).toEqual([8, 27, 64]);
         });
 
     it('Mapped value of ([2, 3, 4],identity) is [2, 3, 4]', () =>{
@@ -35,7 +35,6 @@ describe ('Return Mapped Operation' , () => {
 
     it('Mapped value of ({x:10},object) is [11]', () => {
         var a = [{x:10}];
-        var obj;
         expect(operations.map(a,operations.returnObject)).toEqual([11]);
          });
 
@@ -48,19 +47,19 @@ describe ('Return Value according to filter', () => {
        });
 
     it('Filter of [1, 2, 3],true is [1, 2, 3]', () =>{
-        expect(operations.filter([1, 2, 3],true)).toEqual([1, 2, 3]);
+        expect(operations.filter([1, 2, 3],operations.returnTrue)).toEqual([1, 2, 3]);
         });
 
     it('Filter of [1, 2, 3],false is []', () =>{
-        expect(operations.filter([1, 2, 3], false)).toEqual([]);
+        expect(operations.filter([1, 2, 3], operations.returnFalse)).toEqual([]);
         });
 
     it('Filter of [1,2,3],1 is [2,3]', () => {
-        expect(operations.filter([1, 2, 3], 1)).toEqual([2, 3]);
+        expect(operations.filter([1, 2, 3], operations.filterValuesGreaterThanX)).toEqual([2, 3]);
         });
 
     it('Filter of [],filterUpperCase is []', () => {
-        expect(operations.filter(['a','B','c','D'],operations.filterUppercase)).toEqual['B','D'];
+        expect(operations.filter(['a','B','c','D'],operations.filterUpperCase)).toEqual['B','D'];
          });
     })
 
