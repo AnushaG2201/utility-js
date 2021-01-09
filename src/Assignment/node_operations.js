@@ -27,21 +27,37 @@ var storeCube = (arrVariable) => {
     }
 
 const filter = (arr,x) => {
+   //console.log(arr,x);
+    var result ;
+    result = filterUppercase(arr);
+    //result = filterValuesGreaterThanX(arr, 1);
     if(x == true)
-    return arr;
-    else{
-    arr = [];
-    return arr;
+     result = arr.filter(x => true);
+    if(typeof(x) == "number")
+     result = arr.filter(num => num > x);
+    return result;
     }
-    }
+var filterUppercase = (arr) => {
+var res = arr.filter(char => char > 65 && char < 90)
+return res;
+}
+
+//var filterValuesGreaterThanX(arr, x) => {
+//var res = arr.filter(num => num > x);
+//return res;
+//}
+
+
 
 const max = (arr) => {
-       //var maxValue = arr.reduce(function(value1,value2) {
        return Math.max(...arr);
-      // });
        }
 const min = (arr) => {
        return Math.min(...arr);
        }
 
-module.exports = {head:head, tail:tail, map:map, storeCube:storeCube, filter:filter, max:max, min:min};
+const reduce = (arr,reducer) => {
+
+    }
+
+module.exports = {head:head, tail:tail, map:map, storeCube:storeCube, filter:filter, max:max, min:min,filterUppercase:filterUppercase};
