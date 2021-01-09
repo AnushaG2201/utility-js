@@ -76,8 +76,15 @@ describe('Return the minimum value in an array', () => {
         });
 })
 
-//describe('Reduce functionality' , () => {
-//    it('The reduce of [],(x,y) is []', () => {
-//        expect(operations.reduce([],operations.reduceHelper)).toEquals([]);
-//    });
-//})
+describe('Reduce functionality' , () => {
+    it('The reduce of [],(x,y) is []', () => {
+        expect(operations.reduce([],operations.returnReduce)).toEqual([]);
+    });
+    it('The reduce of [1,2,3],(x,y) is [6]', () => {
+            expect(operations.reduce([1,2,3],operations.returnReduce)).toEqual(6);
+     });
+     it('The reduce of [a,b,c],(x,y) is [abc]', () => {
+             expect(operations.reduce(['a','b','c'],operations.returnReduce)).toEqual('abc');
+      });
+
+})
