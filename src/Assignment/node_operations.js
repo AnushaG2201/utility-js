@@ -25,11 +25,6 @@ var mapFunctions = (mapResult, arr, mapOperation) => {
     }
 }
 
-var returnCube = (num) => Math.pow(num, 3);
-var returnIdentity = (num) => num*1;
-var returnObject = (num) => (num.x)+1;
-
-
 const filter = (arr, filterOperation) => {
        var filterResult = [];
        filterFunctions(filterResult, arr, filterOperation);
@@ -45,12 +40,6 @@ var filterFunctions = (filterResult, arr, filterOperation) => {
            filterFunctions(filterResult, arr, filterOperation)
            }
 }
-
-var filterUpperCase = (char) => char > 'A' && char < 'Z'
-var returnTrue = (num) => num;
-var returnFalse = (num) => !num;
-var filterValuesGreaterThanX = (num) => num > 1;
-
 
 const reduce = (arr,reducerFunc,additionalValue) => {
     var reduceResult;
@@ -76,7 +65,6 @@ var reducer = (reduceResult, arr, reducerFunc) => {
   }
     return reduceResult;
 }
-var returnReduce = (x,y) => x+y;
 
 const max = (arr) => {
     var max = 0;
@@ -108,22 +96,14 @@ return min;
 
 
 
-module.exports = {head:head,
+module.exports = {
+head:head,
 tail:tail,
 map:map,
-returnCube:returnCube,
-returnIdentity:returnIdentity,
-returnObject:returnObject,
 filter:filter,
-filterUpperCase:filterUpperCase,
-filterValuesGreaterThanX:filterValuesGreaterThanX,
-returnFalse:returnFalse,
-returnTrue:returnTrue,
 max:max,
 min:min,
 maxFinder:maxFinder,
 minFinder:minFinder,
-returnReduce:returnReduce,
 reduce:reduce,
 };
-//returnReduceWithValues:returnReduceWithValues};

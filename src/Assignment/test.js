@@ -22,20 +22,24 @@ describe ('Return Tail value' , () => {
 describe ('Return Mapped Operation' , () => {
 
     it('Mapped value of [] is []' , () => {
-       expect(operations.map([],operations.returnCube)).toEqual([])
+        var cube = (num) => Math.pow(num, 3);
+       expect(operations.map([],cube)).toEqual([])
        });
 
     it('Mapped value of ([2,3,4],cube) is [8,27,64]', () =>{
-        expect(operations.map([2, 3, 4],operations.returnCube)).toEqual([8, 27, 64]);
+        var cube = (num) => Math.pow(num, 3);
+        expect(operations.map([2, 3, 4],cube)).toEqual([8, 27, 64]);
         });
 
     it('Mapped value of ([2, 3, 4],identity) is [2, 3, 4]', () =>{
-            expect(operations.map([2, 3, 4],operations.returnIdentity)).toEqual([2, 3, 4]);
+            var identity = (num) => num*1;
+            expect(operations.map([2, 3, 4],identity)).toEqual([2, 3, 4]);
             });
 
     it('Mapped value of ({x:10},object) is [11]', () => {
         var a = [{x:10}];
-        expect(operations.map(a,operations.returnObject)).toEqual([11]);
+        var object = (num) => (num.x)+1;
+        expect(operations.map(a,object)).toEqual([11]);
          });
 
      })
@@ -43,23 +47,28 @@ describe ('Return Mapped Operation' , () => {
 describe ('Return Value according to filter', () => {
 
     it('Filter of [],true is []', () =>{
-    expect(operations.filter([],true)).toEqual([]);
+        var returnTrue = (num) => num;
+        expect(operations.filter([],returnTrue)).toEqual([]);
        });
 
     it('Filter of [1, 2, 3],true is [1, 2, 3]', () =>{
-        expect(operations.filter([1, 2, 3],operations.returnTrue)).toEqual([1, 2, 3]);
+        var returnTrue = (num) => num;
+        expect(operations.filter([1, 2, 3], returnTrue)).toEqual([1, 2, 3]);
         });
 
     it('Filter of [1, 2, 3],false is []', () =>{
-        expect(operations.filter([1, 2, 3], operations.returnFalse)).toEqual([]);
+        var returnFalse = (num) => !num;
+        expect(operations.filter([1, 2, 3], returnFalse)).toEqual([]);
         });
 
     it('Filter of [1,2,3],1 is [2,3]', () => {
-        expect(operations.filter([1, 2, 3], operations.filterValuesGreaterThanX(1))).toEqual([2, 3]);
+        var filterValuesGreaterThanX = (num) => num > 1;
+        expect(operations.filter([1, 2, 3], filterValuesGreaterThanX)).toEqual([2, 3]);
         });
 
     it('Filter of ["a,B,c,D"],filterUpperCase is ["B,D"]', () => {
-        expect(operations.filter(['a','B','c','D'],operations.filterUpperCase)).toEqual['B','D'];
+        var filterUpperCase = (char) => char > 'A' && char < 'Z';
+        expect(operations.filter(['a','B','c','D'], filterUpperCase)).toEqual['B','D'];
          });
     })
 
@@ -76,20 +85,21 @@ describe('Return the minimum value in an array', () => {
 })
 
 describe('Reduce functionality' , () => {
+    var reduce = (x,y) => x+y;
     it('The reduce of [],(x,y) is []', () => {
-        expect(operations.reduce([],operations.returnReduce)).toEqual([]);
+        expect(operations.reduce([],reduce)).toEqual([]);
     });
     it('The reduce of [1,2,3],(x,y) is [6]', () => {
-            expect(operations.reduce([1,2,3],operations.returnReduce)).toEqual(6);
+        expect(operations.reduce([1,2,3],reduce)).toEqual(6);
      });
      it('The reduce of [a,b,c],(x,y) is [abc]', () => {
-             expect(operations.reduce(['a','b','c'],operations.returnReduce)).toEqual('abc');
+         expect(operations.reduce(['a','b','c'],reduce)).toEqual('abc');
       });
       it('The reduce of [1,2,3],(x,y,5) is [11]', () => {
-                  expect(operations.reduce([1,2,3],operations.returnReduce,5)).toEqual(11);
+         expect(operations.reduce([1,2,3],reduce,5)).toEqual(11);
       });
       it('The reduce of [a,b,c],(x,y) is [abc]', () => {
-                   expect(operations.reduce(['a','b','c'],operations.returnReduce,'z')).toEqual('zabc');
+         expect(operations.reduce(['a','b','c'],reduce,'z')).toEqual('zabc');
       });
 
 })
