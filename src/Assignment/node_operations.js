@@ -1,4 +1,4 @@
-//global.mapResult = [];
+
 const head = (arr) => {
     if(arr == null)
         return undefined;
