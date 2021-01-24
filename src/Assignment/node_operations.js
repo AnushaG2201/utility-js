@@ -1,6 +1,6 @@
 const head = ([head,...tail]) => {
      return head;
-}
+
 
 const tail = ([first,...tail]) => {
      return tail;
@@ -38,22 +38,6 @@ const maxFinder = (arr, max) => {
     }
 return max;
 }
-
-//const min = (arr) => {
-//    var min = 9999;
-//    var result = minFinder(arr, min);
-//    return result;
-//}
-//const minFinder = (arr, min) => {
-//    if(arr.length != 0)
-//    {
-//    var num = arr.shift();
-//    min = minFinder(arr, Math.min(num, min));
-//    }
-//return min;
-//}
-
-
 
 module.exports = {
 head,
