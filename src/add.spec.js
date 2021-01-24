@@ -11,10 +11,3 @@ describe('Add', () => {
     });
 
 })
-//const head = require('./head');
-describe('Return Head', () => {
-    var headArray = [1,2,3];
-    it('Head value of [1,2,3] is 1',() => {
-        this.expect(head(headArray)).toEqual(1);
-       });
-})
