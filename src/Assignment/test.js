@@ -1,10 +1,10 @@
 const operations = require('./node_operations');
 describe ('Return Head Value', () => {
-    it('Head Value of [] is undefined', () => {
+    it('First value of [] is undefined', () => {
         expect(operations.head([])).toEqual(undefined);
     });
 
-    it('Head Value of [1,2,3] is 1', () => {
+    it('First value of [1,2,3] is 1', () => {
         expect(operations.head([1,2,3])).toEqual(1);
     });
 })
@@ -73,14 +73,16 @@ describe ('Return Value according to filter', () => {
     })
 
 describe('Return the maximum Value in an array', () => {
+var max = (x,y) => x>y?x:y
     it('Maximum of [1,2,3,4] is 4', () => {
-        expect(operations.max([1,2,3,4])).toEqual(4);
+        expect(operations.reduce([1,2,3,4],max)).toEqual(4);
         });
 })
 
 describe('Return the minimum value in an array', () => {
+var min = (x,y) => (x<y?x:y)
     it('The minimum of [1,2,3,4] is 1', () => {
-        expect(operations.min([1,2,3,4])).toEqual(1)
+        expect(operations.reduce([1,2,3,4],min)).toEqual(1)
         });
 })
 
